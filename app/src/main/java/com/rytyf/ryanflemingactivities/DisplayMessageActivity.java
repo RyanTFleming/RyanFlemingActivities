@@ -37,7 +37,6 @@ public class DisplayMessageActivity extends AppCompatActivity {
 
         Intent intent = getIntent();
         firstMessage = intent.getStringExtra(MainActivity.EXTRA_MESSAGE);
-
         TextView textView = (TextView) findViewById(R.id.txtMessage1);
         textView.setText(firstMessage);
     }

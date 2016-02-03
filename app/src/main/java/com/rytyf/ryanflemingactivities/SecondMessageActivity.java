@@ -4,13 +4,16 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
+import android.support.v4.app.NavUtils;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.TextView;
 
 public class SecondMessageActivity extends AppCompatActivity {
 
+    private Intent intent;
     private String firstMessage;
     private String secondMessage;
 
@@ -33,7 +36,7 @@ public class SecondMessageActivity extends AppCompatActivity {
             getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         }
 
-        Intent intent = getIntent();
+        intent = getIntent();
         firstMessage = intent.getStringExtra(MainActivity.EXTRA_MESSAGE);
         TextView textView = (TextView) findViewById(R.id.messageOne);
         textView.setText(firstMessage);
@@ -43,4 +46,13 @@ public class SecondMessageActivity extends AppCompatActivity {
         txtViewTwo.setText(secondMessage);
     }
 
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case android.R.id.home:
+                NavUtils.navigateUpTo(this, intent);
+                return true;
+        }
+        return super.onOptionsItemSelected(item);
+    }
 }
