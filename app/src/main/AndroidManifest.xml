@@ -27,6 +27,15 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.rytyf.ryanflemingactivities.MainActivity" />
         </activity>
+        <activity
+            android:name=".SecondMessageActivity"
+            android:label="@string/title_activity_second_message"
+            android:parentActivityName=".DisplayMessageActivity"
+            android:theme="@style/AppTheme.NoActionBar">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.rytyf.ryanflemingactivities.DisplayMessageActivity" />
+        </activity>
     </application>
 
 </manifest>

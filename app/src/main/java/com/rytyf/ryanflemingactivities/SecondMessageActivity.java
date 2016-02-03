@@ -8,19 +8,14 @@ import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
-import android.widget.EditText;
-import android.widget.RelativeLayout;
 import android.widget.TextView;
 
-public class DisplayMessageActivity extends AppCompatActivity {
-
-    public final static String SECOND_MESSAGE = "com.rytyf.ryanflemingactivity.MESSAGE";
-    private String firstMessage;
+public class SecondMessageActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_display_message);
+        setContentView(R.layout.activity_second_message);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
@@ -36,27 +31,14 @@ public class DisplayMessageActivity extends AppCompatActivity {
             getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         }
 
-
         Intent intent = getIntent();
-        firstMessage = intent.getStringExtra(MainActivity.EXTRA_MESSAGE);
-
-        TextView textView = (TextView) findViewById(R.id.txtMessage1);
+        String firstMessage = intent.getStringExtra(MainActivity.EXTRA_MESSAGE);
+        TextView textView = (TextView) findViewById(R.id.messageOne);
         textView.setText(firstMessage);
+
+        String secondMessage = intent.getStringExtra(DisplayMessageActivity.SECOND_MESSAGE);
+        TextView txtViewTwo = (TextView) findViewById(R.id.messageTwo);
+        txtViewTwo.setText(secondMessage);
     }
 
-    /**
-     * Action performed when the button is clicked.
-     * Sends creates an intent containing the two messages that have
-     * been entered.
-     *
-     * @param view - the button clicked
-     */
-    public void sendMessage(View view) {
-        Intent intent = new Intent(this, SecondMessageActivity.class);
-        EditText editText = (EditText) findViewById(R.id.txtMessage2);
-        String secondMessage = editText.getText().toString();
-        intent.putExtra(MainActivity.EXTRA_MESSAGE, firstMessage);
-        intent.putExtra(SECOND_MESSAGE, secondMessage);
-        startActivity(intent);
-    }
 }
