@@ -1,6 +1,7 @@
 package com.rytyf.ryanflemingactivities;
 
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
@@ -44,13 +45,28 @@ public class SecondMessageActivity extends AppCompatActivity {
         secondMessage = intent.getStringExtra(DisplayMessageActivity.SECOND_MESSAGE);
         TextView txtViewTwo = (TextView) findViewById(R.id.messageTwo);
         txtViewTwo.setText(secondMessage);
+
+        if (textView.getText().equals("")) {
+            textView.setText("No Message Sent");
+            textView.setTextColor(Color.RED);
+        }
+        if (txtViewTwo.getText().equals("")) {
+            txtViewTwo.setText("No Message Sent");
+            txtViewTwo.setTextColor(Color.RED);
+        }
     }
 
+    /**
+     * Returns the intent to the previous activity when navigating up
+     *
+     * @param item the up navigation button
+     * @return true if clicked?
+     */
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
             case android.R.id.home:
-                NavUtils.navigateUpTo(this, intent);
+                NavUtils.navigateUpTo(this,intent);
                 return true;
         }
         return super.onOptionsItemSelected(item);
