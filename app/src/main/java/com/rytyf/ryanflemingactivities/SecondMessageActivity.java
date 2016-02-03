@@ -1,7 +1,6 @@
 package com.rytyf.ryanflemingactivities;
 
 import android.content.Intent;
-import android.graphics.Color;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
@@ -11,6 +10,9 @@ import android.view.View;
 import android.widget.TextView;
 
 public class SecondMessageActivity extends AppCompatActivity {
+
+    private String firstMessage;
+    private String secondMessage;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -32,11 +34,11 @@ public class SecondMessageActivity extends AppCompatActivity {
         }
 
         Intent intent = getIntent();
-        String firstMessage = intent.getStringExtra(MainActivity.EXTRA_MESSAGE);
+        firstMessage = intent.getStringExtra(MainActivity.EXTRA_MESSAGE);
         TextView textView = (TextView) findViewById(R.id.messageOne);
         textView.setText(firstMessage);
 
-        String secondMessage = intent.getStringExtra(DisplayMessageActivity.SECOND_MESSAGE);
+        secondMessage = intent.getStringExtra(DisplayMessageActivity.SECOND_MESSAGE);
         TextView txtViewTwo = (TextView) findViewById(R.id.messageTwo);
         txtViewTwo.setText(secondMessage);
     }
